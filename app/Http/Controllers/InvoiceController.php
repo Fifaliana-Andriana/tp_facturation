@@ -18,6 +18,8 @@ class InvoiceController extends Controller
     public function index()
     {
         //
+        $invoices =  Invoice::with('client')->latest()->paginate(15);
+        return view('invoices.index', compact('invoices'));
     }
 
     /**
